@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MonoBuild</title>
+
+  <meta name="description" content="MonoBuild is an independent product studio building practical, scalable software products." />
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+      --card: #111827;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 90px 24px;
+    }
+
+    h1 {
+      font-size: 3.4rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    .hero {
+      margin-bottom: 100px;
+    }
+
+    .cta {
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-bottom: 90px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 14px;
+    }
+
+    footer {
+      margin-top: 120px;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>MonoBuild</h1>
+      <p>
+        An independent product studio building practical software products
+        with a focus on performance, scale, and simplicity.
+      </p>
+
+      <div class="cta">
+        <a class="btn" href="mailto:hello@monobuild.in">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- WHAT IT IS -->
+    <section class="section">
+      <h2>What is MonoBuild?</h2>
+      <p>
+        MonoBuild is a builder-led studio focused on creating real-world applications,
+        developer tools, and systems that are designed to scale cleanly from day one.
+      </p>
+    </section>
+
+    <!-- CURRENT FOCUS -->
+    <section class="section">
+      <h2>Currently Building</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Docsy</h3>
+          <p>
+            A documentation and workflow tool focused on improving how teams
+            structure, manage, and scale internal knowledge.
+          </p>
+          <p style="color:#6b7280;font-size:0.95rem;">
+            Early stage · Actively developed
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            More products and experiments are in active development under MonoBuild.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="section">
+      <h2>Principles</h2>
+
+      <div class="cards">
+        <div class="card">Clean, maintainable architecture</div>
+        <div class="card">Performance-first decisions</div>
+        <div class="card">Developer experience matters</div>
+        <div class="card">Build for the long term</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <h2>About</h2>
+      <p>
+        MonoBuild is led by Farhan Ahmad, a developer focused on building scalable
+        products and experimenting with ideas that solve real problems.
+      </p>
+    </section>
+
+    <footer>
+      © 2026 MonoBuild · monobuild.in
+    </footer>
+
+  </div>
+
+</body>
+</html>
