@@ -41,7 +41,10 @@ export function Navbar() {
           <div className="w-7 h-7 rounded-[var(--radius-md)] bg-[var(--color-surface-container-highest)] ring-1 ring-[var(--color-outline)] flex items-center justify-center text-[var(--color-on-surface)] font-bold text-xs shrink-0 transition-all duration-200 group-hover:ring-[var(--color-primary)] group-hover:text-[var(--color-primary)]">
             M
           </div>
-          <span className="font-bold text-[var(--color-on-surface)] tracking-tight">
+          <span
+            className="text-[var(--color-on-surface)] font-semibold tracking-[0.08em] uppercase text-sm"
+            style={{ fontFamily: 'var(--font-brand)' }}
+          >
             {brandConfig.name}
           </span>
         </Link>
