@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   MONOBUILD DESIGN SYSTEM — CSS CUSTOM PROPERTIES
+   Sourced from: src/lib/theme/theme.config.ts
+   To rebrand: update theme.config.ts + these vars
+   ───────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --color-background:                #0f131e;
+    --color-surface:                   #0f131e;
+    --color-surface-dim:               #0f131e;
+    --color-surface-container-lowest:  #0a0e19;
+    --color-surface-container-low:     #171b27;
+    --color-surface-container:         #1b1f2b;
+    --color-surface-container-high:    #262a36;
+    --color-surface-container-highest: #313441;
+    --color-surface-bright:            #353945;
+
+    /* Primary */
+    --color-primary:            #c0c1ff;
+    --color-primary-container:  #8083ff;
+    --color-on-primary:         #1000a9;
+    --color-on-primary-container: #0d0096;
+
+    /* Secondary */
+    --color-secondary:            #c0c7d3;
+    --color-secondary-container:  #404752;
+    --color-on-secondary:         #2a313b;
+    --color-on-secondary-container: #afb5c2;
+
+    /* Tertiary */
+    --color-tertiary:           #c4c7ca;
+    --color-tertiary-container: #8e9195;
+
+    /* On colors */
+    --color-on-background:     #dfe2f2;
+    --color-on-surface:        #dfe2f2;
+    --color-on-surface-variant: #c7c4d7;
+
+    /* Outlines */
+    --color-outline:         #908fa0;
+    --color-outline-variant: #464554;
+
+    /* Error */
+    --color-error:           #ffb4ab;
+    --color-error-container: #93000a;
+
+    /* Typography */
+    --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Radius */
+    --radius-sm:   0.25rem;
+    --radius-md:   0.375rem;
+    --radius-lg:   0.5rem;
+    --radius-xl:   0.75rem;
+    --radius-2xl:  1rem;
+    --radius-full: 9999px;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #c0c1ff, #8083ff);
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(128, 131, 255, 0.15) 0%, transparent 70%);
+    --gradient-surface: linear-gradient(180deg, #0f131e 0%, #0a0e19 100%);
+
+    /* Shadows */
+    --shadow-ambient: 0 8px 60px rgba(10, 14, 25, 0.5);
+    --shadow-glow:    0 0 40px rgba(192, 193, 255, 0.08);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────── */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(192, 193, 255, 0.2);
+    color: var(--color-primary);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface-container-lowest);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-outline-variant);
+    border-radius: var(--radius-full);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-outline);
+  }
+
+  /* Focus */
+  :focus-visible {
+    outline: 2px solid rgba(192, 193, 255, 0.5);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY CLASSES (Engineering Monolith system)
+   ───────────────────────────────────────────── */
+
+@layer utilities {
+  /* Typography scale */
+  .display-lg   { font-size: 3.5rem;  line-height: 1.1; letter-spacing: -0.04em; font-weight: 700; }
+  .display-md   { font-size: 2.875rem; line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; }
+  .display-sm   { font-size: 2.25rem;  line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+
+  .headline-lg  { font-size: 2rem;    line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; }
+  .headline-md  { font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.015em; font-weight: 600; }
+  .headline-sm  { font-size: 1.5rem;  line-height: 1.3;  letter-spacing: -0.01em; font-weight: 600; }
+
+  .title-lg     { font-size: 1.25rem; line-height: 1.4;  font-weight: 600; }
+  .title-md     { font-size: 1rem;    line-height: 1.5;  font-weight: 600; }
+  .title-sm     { font-size: 0.875rem; line-height: 1.5; font-weight: 600; }
+
+  .body-lg      { font-size: 1rem;    line-height: 1.75; font-weight: 400; }
+  .body-md      { font-size: 0.9375rem; line-height: 1.7; font-weight: 400; }
+  .body-sm      { font-size: 0.875rem; line-height: 1.65; font-weight: 400; }
+
+  .label-lg     { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; }
+  .label-md     { font-size: 0.75rem;  font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .label-sm     { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(27, 31, 43, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Tonal surfaces (no-border system) */
+  .surface           { background-color: var(--color-surface); }
+  .surface-low       { background-color: var(--color-surface-container-low); }
+  .surface-container { background-color: var(--color-surface-container); }
+  .surface-high      { background-color: var(--color-surface-container-high); }
+  .surface-highest   { background-color: var(--color-surface-container-highest); }
+
+  /* Section spacing */
+  .section-padding { padding-block: 6rem; }
+  .section-padding-sm { padding-block: 4rem; }
+
+  /* Eyebrow label */
+  .eyebrow {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Animation utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+   ───────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
