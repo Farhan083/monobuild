@@ -9,7 +9,6 @@ type ButtonSize = 'sm' | 'md' | 'lg';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  asChild?: boolean;
   href?: string;
   loading?: boolean;
   icon?: React.ReactNode;
@@ -17,34 +16,39 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
+  // Primary: blue gradient — the ONE blue element users click
   primary: [
-    'text-[var(--color-on-primary)] font-semibold',
-    'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-container)]',
-    'hover:opacity-90 active:opacity-80',
-    'shadow-[0_0_20px_rgba(192,193,255,0.15)]',
+    'text-white font-semibold',
+    'bg-[var(--color-primary)]',
+    'hover:bg-[#3B7AE8] active:bg-[#2D6DD8]',
+    'shadow-[0_1px_2px_rgba(0,0,0,0.4),0_0_0_1px_rgba(79,142,247,0.3)]',
+    'hover:shadow-[0_4px_20px_rgba(79,142,247,0.25),0_0_0_1px_rgba(79,142,247,0.4)]',
   ].join(' '),
 
+  // Secondary: dark surface with ghost border — black dominant
   secondary: [
-    'bg-[var(--color-surface-container-high)] text-[var(--color-on-surface)]',
-    'hover:bg-[var(--color-surface-container-highest)]',
-    'ring-1 ring-[rgba(70,69,84,0.4)]',
+    'bg-[var(--color-surface-container-high)] text-[var(--color-on-surface)] font-medium',
+    'ring-1 ring-[var(--color-outline)]',
+    'hover:bg-[var(--color-surface-container-highest)] hover:ring-[var(--color-outline-variant)]',
+    'hover:ring-[rgba(42,50,69,0.8)]',
   ].join(' '),
 
+  // Ghost: text-only, near-white — blends into the dark canvas
   ghost: [
-    'bg-transparent text-[var(--color-primary)]',
-    'hover:bg-[var(--color-surface-container-low)]',
+    'bg-transparent text-[var(--color-on-surface-variant)] font-medium',
+    'hover:text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-low)]',
   ].join(' '),
 
   danger: [
-    'bg-[var(--color-error-container)] text-[var(--color-error)]',
+    'bg-[var(--color-error-container)] text-[var(--color-error)] font-medium',
     'hover:opacity-90',
   ].join(' '),
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'h-8 px-3 text-xs rounded-[var(--radius-md)] gap-1.5',
-  md: 'h-10 px-5 text-sm rounded-[var(--radius-md)] gap-2',
-  lg: 'h-12 px-7 text-base rounded-[var(--radius-lg)] gap-2.5',
+  sm: 'h-8  px-3.5 text-[0.8125rem] rounded-[var(--radius-md)] gap-1.5',
+  md: 'h-10 px-5   text-[0.875rem]  rounded-[var(--radius-md)] gap-2',
+  lg: 'h-12 px-6   text-[0.9375rem] rounded-[var(--radius-lg)] gap-2.5',
 };
 
 export function Button({
@@ -60,7 +64,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base = cn(
-    'inline-flex items-center justify-center font-medium',
+    'inline-flex items-center justify-center',
     'transition-all duration-200 ease-out cursor-pointer',
     'select-none whitespace-nowrap',
     'disabled:opacity-40 disabled:cursor-not-allowed',
@@ -72,17 +76,15 @@ export function Button({
   const content = (
     <>
       {icon && iconPosition === 'left' && <span className="shrink-0">{icon}</span>}
-      {loading ? <span className="opacity-70">Loading…</span> : children}
-      {icon && iconPosition === 'right' && <span className="shrink-0">{icon}</span>}
+      {loading ? <span className="opacity-60">Loading…</span> : children}
+      {icon && iconPosition === 'right' && (
+        <span className="shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">{icon}</span>
+      )}
     </>
   );
 
   if (href) {
-    return (
-      <a href={href} className={base}>
-        {content}
-      </a>
-    );
+    return <a href={href} className={cn(base, 'group')}>{content}</a>;
   }
 
   return (

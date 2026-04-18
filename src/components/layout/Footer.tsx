@@ -10,7 +10,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
-              <div className="w-7 h-7 rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-container)] flex items-center justify-center text-[var(--color-on-primary)] font-bold text-xs shrink-0">
+              <div className="w-7 h-7 rounded-[var(--radius-md)] bg-[var(--color-surface-container-highest)] ring-1 ring-[var(--color-outline)] flex items-center justify-center text-[var(--color-on-surface)] font-bold text-xs shrink-0">
                 M
               </div>
               <span className="font-bold text-[var(--color-on-surface)] tracking-tight">

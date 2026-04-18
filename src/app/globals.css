@@ -2,58 +2,54 @@
 
 /* ─────────────────────────────────────────────
    MONOBUILD DESIGN SYSTEM — CSS CUSTOM PROPERTIES
+   Philosophy: BLACK dominant. Blue as surgical accent only.
    Sourced from: src/lib/theme/theme.config.ts
-   To rebrand: update theme.config.ts + these vars
    ───────────────────────────────────────────── */
 
 @layer base {
   :root {
-    /* Surfaces */
-    --color-background:                #0f131e;
-    --color-surface:                   #0f131e;
-    --color-surface-dim:               #0f131e;
-    --color-surface-container-lowest:  #0a0e19;
-    --color-surface-container-low:     #171b27;
-    --color-surface-container:         #1b1f2b;
-    --color-surface-container-high:    #262a36;
-    --color-surface-container-highest: #313441;
-    --color-surface-bright:            #353945;
+    /* ── Core Surfaces (obsidian blacks) ── */
+    --color-background:                #07090F;
+    --color-surface:                   #07090F;
+    --color-surface-dim:               #050709;
+    --color-surface-container-lowest:  #0B0D14;
+    --color-surface-container-low:     #0F1219;
+    --color-surface-container:         #141820;
+    --color-surface-container-high:    #1A1F2C;
+    --color-surface-container-highest: #212638;
+    --color-surface-bright:            #2A3045;
 
-    /* Primary */
-    --color-primary:            #c0c1ff;
-    --color-primary-container:  #8083ff;
-    --color-on-primary:         #1000a9;
-    --color-on-primary-container: #0d0096;
+    /* ── Blue Accent (used sparingly — surgical) ── */
+    --color-primary:            #4F8EF7;
+    --color-primary-container:  #1A4FB8;
+    --color-on-primary:         #FFFFFF;
+    --color-on-primary-container: #C2D9FF;
 
-    /* Secondary */
-    --color-secondary:            #c0c7d3;
-    --color-secondary-container:  #404752;
-    --color-on-secondary:         #2a313b;
-    --color-on-secondary-container: #afb5c2;
+    /* ── Secondary / Neutral ── */
+    --color-secondary:            #6B7A99;
+    --color-secondary-container:  #1A1F2C;
+    --color-on-secondary:         #1A1F2C;
+    --color-on-secondary-container: #8A97B5;
 
-    /* Tertiary */
-    --color-tertiary:           #c4c7ca;
-    --color-tertiary-container: #8e9195;
+    /* ── Text colors ── */
+    --color-on-background:      #EEF2FF;
+    --color-on-surface:         #EEF2FF;
+    --color-on-surface-variant: #6B7A99;
 
-    /* On colors */
-    --color-on-background:     #dfe2f2;
-    --color-on-surface:        #dfe2f2;
-    --color-on-surface-variant: #c7c4d7;
+    /* ── Borders (ghost, almost invisible) ── */
+    --color-outline:         #2A3245;
+    --color-outline-variant: #171C28;
 
-    /* Outlines */
-    --color-outline:         #908fa0;
-    --color-outline-variant: #464554;
+    /* ── Error ── */
+    --color-error:           #F87171;
+    --color-error-container: #450A0A;
 
-    /* Error */
-    --color-error:           #ffb4ab;
-    --color-error-container: #93000a;
-
-    /* Typography */
+    /* ── Typography ── */
     --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
     --font-display: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 
-    /* Radius */
+    /* ── Radius ── */
     --radius-sm:   0.25rem;
     --radius-md:   0.375rem;
     --radius-lg:   0.5rem;
@@ -61,14 +57,19 @@
     --radius-2xl:  1rem;
     --radius-full: 9999px;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #c0c1ff, #8083ff);
-    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(128, 131, 255, 0.15) 0%, transparent 70%);
-    --gradient-surface: linear-gradient(180deg, #0f131e 0%, #0a0e19 100%);
+    /* ── Gradients ── */
+    /* Hero: barely visible blue corona — felt, not seen */
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -5%, rgba(49, 100, 220, 0.07) 0%, transparent 65%);
+    /* Primary CTA only */
+    --gradient-primary: linear-gradient(135deg, #4F8EF7 0%, #1A4FB8 100%);
+    /* Surface depth */
+    --gradient-surface: linear-gradient(180deg, #07090F 0%, #050709 100%);
+    /* Subtle card shine on hover */
+    --gradient-card-hover: radial-gradient(ellipse at 0% 100%, rgba(49, 100, 220, 0.04), transparent 60%);
 
-    /* Shadows */
-    --shadow-ambient: 0 8px 60px rgba(10, 14, 25, 0.5);
-    --shadow-glow:    0 0 40px rgba(192, 193, 255, 0.08);
+    /* ── Shadows ── */
+    --shadow-ambient: 0 8px 60px rgba(5, 7, 9, 0.8);
+    --shadow-glow:    0 0 40px rgba(79, 142, 247, 0.06);
   }
 }
 
@@ -101,66 +102,61 @@
 
   /* Selection */
   ::selection {
-    background-color: rgba(192, 193, 255, 0.2);
-    color: var(--color-primary);
+    background-color: rgba(79, 142, 247, 0.15);
+    color: #EEF2FF;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-surface-container-lowest);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-outline-variant);
-    border-radius: var(--radius-full);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-outline);
-  }
+  /* Scrollbar — minimal */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-surface-container-lowest); }
+  ::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: var(--radius-full); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-outline-variant); }
 
   /* Focus */
   :focus-visible {
-    outline: 2px solid rgba(192, 193, 255, 0.5);
+    outline: 1.5px solid rgba(79, 142, 247, 0.4);
     outline-offset: 3px;
     border-radius: var(--radius-sm);
   }
 
   /* Links */
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  a { color: inherit; text-decoration: none; }
 }
 
 /* ─────────────────────────────────────────────
-   UTILITY CLASSES (Engineering Monolith system)
+   TYPOGRAPHY SCALE
    ───────────────────────────────────────────── */
 
 @layer utilities {
-  /* Typography scale */
-  .display-lg   { font-size: 3.5rem;  line-height: 1.1; letter-spacing: -0.04em; font-weight: 700; }
-  .display-md   { font-size: 2.875rem; line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; }
-  .display-sm   { font-size: 2.25rem;  line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+  .display-lg   { font-size: clamp(2.5rem, 6vw, 4rem);   line-height: 1.05; letter-spacing: -0.045em; font-weight: 700; }
+  .display-md   { font-size: clamp(2rem, 5vw, 3rem);     line-height: 1.08; letter-spacing: -0.035em; font-weight: 700; }
+  .display-sm   { font-size: clamp(1.5rem, 4vw, 2.25rem);line-height: 1.15; letter-spacing: -0.025em; font-weight: 600; }
 
-  .headline-lg  { font-size: 2rem;    line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; }
-  .headline-md  { font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.015em; font-weight: 600; }
-  .headline-sm  { font-size: 1.5rem;  line-height: 1.3;  letter-spacing: -0.01em; font-weight: 600; }
+  .headline-lg  { font-size: 2rem;    line-height: 1.2;  letter-spacing: -0.02em; font-weight: 600; }
+  .headline-md  { font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.018em; font-weight: 600; }
+  .headline-sm  { font-size: 1.5rem;  line-height: 1.3;  letter-spacing: -0.015em; font-weight: 600; }
 
-  .title-lg     { font-size: 1.25rem; line-height: 1.4;  font-weight: 600; }
-  .title-md     { font-size: 1rem;    line-height: 1.5;  font-weight: 600; }
-  .title-sm     { font-size: 0.875rem; line-height: 1.5; font-weight: 600; }
+  .title-lg     { font-size: 1.125rem; line-height: 1.45; font-weight: 600; letter-spacing: -0.01em; }
+  .title-md     { font-size: 1rem;    line-height: 1.5;  font-weight: 500; }
+  .title-sm     { font-size: 0.875rem; line-height: 1.5; font-weight: 500; }
 
-  .body-lg      { font-size: 1rem;    line-height: 1.75; font-weight: 400; }
-  .body-md      { font-size: 0.9375rem; line-height: 1.7; font-weight: 400; }
-  .body-sm      { font-size: 0.875rem; line-height: 1.65; font-weight: 400; }
+  .body-lg      { font-size: 1.0625rem; line-height: 1.8;  font-weight: 400; }
+  .body-md      { font-size: 0.9375rem; line-height: 1.75; font-weight: 400; }
+  .body-sm      { font-size: 0.875rem;  line-height: 1.7;  font-weight: 400; }
 
-  .label-lg     { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; }
-  .label-md     { font-size: 0.75rem;  font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
-  .label-sm     { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .label-lg     { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.015em; }
+  .label-md     { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .label-sm     { font-size: 0.625rem;  font-weight: 600; letter-spacing: 0.1em;  text-transform: uppercase; }
 
-  /* Gradient text */
+  /* Monospace for technical elements */
+  .mono         { font-family: var(--font-mono); font-size: 0.8125rem; }
+
+  /* ── Color utilities ── */
+  .text-primary   { color: var(--color-primary); }
+  .text-secondary { color: var(--color-on-surface-variant); }
+  .text-surface   { color: var(--color-on-surface); }
+
+  /* Gradient text — blue accent, used very sparingly */
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -168,14 +164,14 @@
     background-clip: text;
   }
 
-  /* Glassmorphism */
+  /* Glassmorphism navbar */
   .glass {
-    background: rgba(27, 31, 43, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(7, 9, 15, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
   }
 
-  /* Tonal surfaces (no-border system) */
+  /* Surface tonal layers */
   .surface           { background-color: var(--color-surface); }
   .surface-low       { background-color: var(--color-surface-container-low); }
   .surface-container { background-color: var(--color-surface-container); }
@@ -183,25 +179,36 @@
   .surface-highest   { background-color: var(--color-surface-container-highest); }
 
   /* Section spacing */
-  .section-padding { padding-block: 6rem; }
+  .section-padding    { padding-block: 6rem; }
   .section-padding-sm { padding-block: 4rem; }
 
-  /* Eyebrow label */
+  /* Eyebrow — blue, tiny, precise */
   .eyebrow {
     color: var(--color-primary);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  /* Animation utilities */
+  /* Ghost divider — no solid lines rule */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--color-outline-variant);
+    opacity: 0.4;
+  }
+
+  /* Animations */
   .animate-fade-up {
-    animation: fadeUp 0.6s ease forwards;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .animate-fade-in {
     animation: fadeIn 0.5s ease forwards;
   }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
 }
 
 /* ─────────────────────────────────────────────
@@ -209,7 +216,7 @@
    ───────────────────────────────────────────── */
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -218,7 +225,7 @@
   to   { opacity: 1; }
 }
 
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }
